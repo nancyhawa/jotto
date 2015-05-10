@@ -2,13 +2,53 @@ require_relative 'wordlist'
 require 'pry'
 
 def gameplay
+	puts "Welcome to JOTTO!"
+	directions?
 	playernum
 end
 
+def directions?
+	puts "Would you like me to review the rules of the game?"
+	puts "Type 'Y' if yes and 'N' if you are ready to play without any instructions."
+
+	example = Hash.new
+
+	example["LIGHT"] = 2
+	example["RIGHT"] = 3
+
+	answer = gets.chomp.downcase
+	if answer == "y"
+		puts "The goal of this game is for you to guess the five letter word of my choosing"
+		puts "My word will be exactly five letters long, and it will have no repeat letters."
+		puts "For example, 'FUNNY' would not be a valid word because it contains two N's."
+		puts "'TOTES would also be invalid because there are two T's, even though the T's are not consecutive."
+		puts "In order to figure out my word, you will guess a five letter word."
+		puts "I will tell you how many letters it has in common with mine."
+		puts "The order of the letters does not matter."
+		puts "Let me give you an example."
+		puts "Let's say your first guess was 'LIGHT' and I told you it had two letters."
+		puts "Then you guess 'RIGHT' and I tell you it has three letters."
+		puts "You can be certain that there is an R somewhere in the word, because the count went up when you added only an R."
+		puts "However, you cannot know whether the R is the first letter."
+		puts "You can also be certain that there is no 'L' in the word."
+		puts "Whenever it is your turn to guess a word, you can type the word 'view' instead, and you will get a list of all the words you have guessed."
+		puts "This is how it will look."
+
+		example.each do |key, value|
+			puts "#{key.upcase}: #{value}"
+		end
+
+		puts "You can also play against me.  You will come up with a word as well, and I will try to figure it out."
+		puts "We will take turns guessing, telling eachother how many letters those guesses have in common with our words."
+		puts "Whoever figures out the other players word first wins."
+		puts "Realistically, you are going to lose.  But you can try."
+	end
+end
+
 def playernum
-	puts "Welcome to JOTTO!"
 	puts "Would you like to play on your own or compete against me?"
 	puts "Enter '1' for a one player game or '2' to play agaist me."
+	
 	players = gets.chomp
 	if players == "1"
 		one_player
@@ -22,7 +62,13 @@ def playernum
 	end
 end
 
+# def num_letters
+# 	letters = gets.chomp
+# end
+
 def one_player
+	#guess_list is a hash that stores the player's guesses and the no. of letters they have 
+	#in common with the computer's word
 	guess_list = Hash.new
 
 	puts "I will choose a five letter word, and you must guess it."
@@ -30,26 +76,41 @@ def one_player
 	in common with mine."
 
 	computer_word = random_word(word_sort)
+
+	#play_list is a list of all valid words for use in the game.
+	#Right now it is the full dictionary, whittled down to 5 letter words with no repeats.
+	#Eventually, I want to build out the game so it is playable with 4 and 6 letter words.
 	play_list = word_sort
 
-  #This is looping, but not breaking when the player declines a rematch.
+  #This works, but doesn't really read in a sensible way.
   until false
     turn(computer_word, guess_list, play_list, rematch_decline)
   end
 end
 
 def two_player
+	#guess_list is a hash that stores the player's guesses and the #of letters they have 
+	#in common with the computer's word
 	guess_list = Hash.new
+
+	#computer_guess_list is a hash that stores the computer's guesses and the #of letters 
+	#they have in common with the player's word
 	computer_guess_list = Hash.new
 
 	computer_word = random_word(word_sort)
-	narrow_list = word_sort
-  	play_list = word_sort
 
+	#play_list is a list of all valid words for use in the game.
+	play_list = word_sort
+
+	#narrow_list starts as a list of all valid words for use in the game, but as the 
+	#computer gets more information, it deletes words from the list, "narrowing" it down
+	#to the users word.
+	narrow_list = word_sort
+  	
 	puts "You think you can beat me?  Highly unlikely."
 	puts "I'll give you a head start. You go first!"
  
-	
+	#Again, I don't think this code is "readable" but it works. 
 	until false
 		turn(computer_word, guess_list, play_list)
 		narrow_list = computer_turn(narrow_list, play_list, 
@@ -57,7 +118,6 @@ def two_player
 	end
 end
 
-#I want this to break out of the loop if the answer is no, but I can't figure that ou
 def rematch
   puts "Great game!"
   puts "Would you like a rematch? Answer 'Yes' or 'No'."
@@ -74,14 +134,14 @@ def rematch
 end
 
 def word_sort
-	game_list = []
+	play_list = []
 
 	word_list.each do |x|
 		if x.length == 5 && repeat_letters?(x) == false
-			game_list.push(x)
+			play_list.push(x)
 		end
 	end
-	return game_list
+	return play_list
 end
 
 def random_word(array)
@@ -95,9 +155,13 @@ def turn(computer_word, guess_list, play_list)
 	puts "Guess a five letter word."
 	guess = gets.chomp
 
-	if guess.downcase == computer_word.downcase
+  if guess.downcase == computer_word.downcase
 		puts "You won!  Congratulations"
     rematch
+  elsif guess_list.has_key?(guess)
+  	puts "You already guessed a word."
+  	puts "#{guess.upcase}: #{guess_list[guess]}"
+  	turn(computer_word, guess_list, play_list)
   elsif guess.downcase == "give up"
     puts "That is super lame.  For real."
     puts "My word was #{computer_word.upcase}."
@@ -145,24 +209,29 @@ def compare(word1, word2)
 end
 
 def computer_turn(narrow_list, play_list, computer_word, computer_guess_list)
-
 	computer_guess = random_word(narrow_list) 
 
 	puts "My turn."
 	puts "My guess is #{computer_guess.upcase}."
 
+	computer_guess_method(narrow_list, play_list, computer_word, computer_guess_list, computer_guess)
+end
+
+#I separated out this method to deal with an error I was getting when a player guessed
+#a word out of turn.	
+def computer_guess_method(narrow_list, play_list, computer_word, computer_guess_list, computer_guess)
+
 	response = gets.chomp
 
-	if response == "view"
-		puts narrow_list[100...110]
-		puts "My next guess is #{computer_guess.upcase}"
-		response = gets.chomp
 	#I need to throw an error for a single letter response.
-	elsif [0, 1, 2, 3, 4, 5].include?(response.to_i) != true or response.length > 1
+	#When the player types a word instead of a response, it thows the correct error, and then 
+	#it asks the player again, but then the next guess is the player's last response.
+	#I don't know why the response becomes the list to choose from.
+	if [0, 1, 2, 3, 4, 5].include?(response.to_i) != true or response.length > 1
 		puts "That is not a valid response.  Your response must be an integer 
 		between 0 and 5."
 		puts "My guess was #{computer_guess.upcase}"
-		response = gets.chomp
+		computer_guess_method(narrow_list, play_list, computer_word, computer_guess_list, computer_guess)
 	elsif response.to_i == 5
 		puts "Was that the word?  Answer Y or N."
 		answer = gets.chomp.downcase
@@ -188,7 +257,7 @@ def refine_list(array, guess, letters_in_common, play_list, computer_word, compu
 		 	array = array - [word]
 		end
 	end
-	puts "#{array.length} words now."
+	# puts "#{array.length} words now."
 	if array.length == 0
 		no_words_error(play_list, computer_word, computer_guess_list)
 	else
@@ -211,8 +280,7 @@ def no_words_error(play_list, computer_word, computer_guess_list)
 	else
 		puts "You made some errors."		
 		computer_guess_list.each do |key, value|
-		#This is printing the puts statements for all guess and not just the ones that were answered inaccurately.
-			if compare(user_word, key) != value
+			if compare(user_word, key) != value.to_i
 				puts "You told me that your word had #{value} letters in common with #{key.upcase}."  
 				puts "Actually, it has #{compare(user_word, key)} letters in common." 
 			end
@@ -223,7 +291,5 @@ def no_words_error(play_list, computer_word, computer_guess_list)
 
 	rematch
 end
-
-
 
 gameplay
