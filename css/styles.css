@@ -1,0 +1,87 @@
+@import url(http://fonts.googleapis.com/css?family=Amatic+SC);
+
+body {
+	font-family: "Amatic SC", cursive;
+	font-size: 2em;
+	background-color: #E0F5FF;
+	text-align: center;
+}
+
+/*#game{
+	display: block;
+	border: 1px black;
+	background-color: #FFFFFF;
+}*/
+
+#header {
+	display: block;
+	background-color: #E0F5FF;
+	font-weight: heavy;
+	font-size: 4em;
+}
+
+#guesslist_hash {
+	display: block;
+	width: 44%;
+	float: left;
+	background-color: #FFFFFF;
+	height: 600px;
+	margin: 20px;
+	font-size: 2em;
+	border: 2px solid black;
+	overflow: scroll;
+}
+
+#letters{
+	font-size: 1em;
+	height: 1em;
+	background-color: #FFFFFF;
+	border: none;
+	padding-left
+}
+
+#guesslist_hash th, #guesslist_hash td {
+	border: 2px solid black;
+	height: 1em;
+}
+
+th {
+	height: 1em;
+
+}
+table {
+	width: 100%;
+	height: 100%;
+	font-size: .5em;
+	text-align: center;
+}
+
+#credit{
+	font-size: .5em;
+	margin-bottom: 20px;
+}
+
+#notes{
+	display: block;
+	width: 44%;
+	float: right;
+	background-color: #FFFFFF;
+	height: 600px;
+	margin:20px;
+	border: 2px solid black;
+}
+
+#alphabet {
+	margin-bottom: 4px;
+	width: 100%;
+	text-align: center;
+	border: 2px solid black;
+}
+
+.guesses {
+	width: 80%;
+}
+
+.values {
+	width: 100%;
+}

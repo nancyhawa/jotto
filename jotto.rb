@@ -1,4 +1,5 @@
 require_relative 'wordlist'
+require_relative 'comp_choice_list'
 require 'pry'
 
 def gameplay
@@ -75,16 +76,16 @@ def one_player
 	puts "Every time you guess, I will tell you how many letters your word has 
 	in common with mine."
 
-	computer_word = random_word(word_sort)
+	computer_word = random_word(word_sort(compwordlist))
 
 	#play_list is a list of all valid words for use in the game.
 	#Right now it is the full dictionary, whittled down to 5 letter words with no repeats.
 	#Eventually, I want to build out the game so it is playable with 4 and 6 letter words.
-	play_list = word_sort
+	play_list = word_sort(word_list)
 
   #This works, but doesn't really read in a sensible way.
   until false
-    turn(computer_word, guess_list, play_list, rematch_decline)
+    turn(computer_word, guess_list, play_list)
   end
 end
 
@@ -97,15 +98,15 @@ def two_player
 	#they have in common with the player's word
 	computer_guess_list = Hash.new
 
-	computer_word = random_word(word_sort)
+	computer_word = random_word(word_sort(compwordlist))
 
 	#play_list is a list of all valid words for use in the game.
-	play_list = word_sort
+	play_list = word_sort(word_list)
 
 	#narrow_list starts as a list of all valid words for use in the game, but as the 
 	#computer gets more information, it deletes words from the list, "narrowing" it down
 	#to the users word.
-	narrow_list = word_sort
+	narrow_list = word_sort(word_list)
   	
 	puts "You think you can beat me?  Highly unlikely."
 	puts "I'll give you a head start. You go first!"
@@ -133,10 +134,10 @@ def rematch
   end
 end
 
-def word_sort
+def word_sort(wordlist)
 	play_list = []
 
-	word_list.each do |x|
+	wordlist.each do |x|
 		if x.length == 5 && repeat_letters?(x) == false
 			play_list.push(x)
 		end
@@ -150,7 +151,7 @@ end
 
 def turn(computer_word, guess_list, play_list)
 
-	sorted_list = word_sort
+	sorted_list = word_sort(word_list)
 
 	puts "Guess a five letter word."
 	guess = gets.chomp
@@ -159,7 +160,7 @@ def turn(computer_word, guess_list, play_list)
 		puts "You won!  Congratulations"
     rematch
   elsif guess_list.has_key?(guess)
-  	puts "You already guessed a word."
+  	puts "You already guessed that word."
   	puts "#{guess.upcase}: #{guess_list[guess]}"
   	turn(computer_word, guess_list, play_list)
   elsif guess.downcase == "give up"
