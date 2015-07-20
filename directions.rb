@@ -33,5 +33,8 @@ def directions?
 		puts "We will take turns guessing, telling eachother how many letters those guesses have in common with our words."
 		puts "Whoever figures out the other players word first wins."
 		puts "Realistically, you are going to lose.  But you can try."
+	elsif answer != "n"
+		puts "I'm sorry, I did not understand that answer."
+		directions?
 	end
 end
