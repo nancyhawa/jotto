@@ -1,5 +1,7 @@
+
+#require_relative 'jotto'
+
 class WordList < Array
-	attr_accessor :array
 
 	def initialize(array)
 		super
@@ -29,11 +31,7 @@ class WordList < Array
 			 	@array = @array - [word]
 			end
 		end
-		if @array.length == 0
-			no_words_error
-		else
-			return WordList.new(@array)
-		end
+		
+		return WordList.new(@array)	
 	end
-
 end
