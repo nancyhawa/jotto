@@ -1,6 +1,3 @@
-
-#require_relative 'jotto'
-
 class WordList < Array
 
 	def initialize(array)

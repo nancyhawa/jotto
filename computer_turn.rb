@@ -28,8 +28,12 @@ class ComputerTurn
 		check_user_response_validity
 		check_response_five
 		process_response
-		#NoWordsError.new(@narrow_list, @play_list, @computer_guess_list).run
+		no_words_error
 		(UserTurn.new(@narrow_list, @playernum, @computer_word, @guess_list_hash, @play_list, @computer_guess_list)).run
+	end
+
+	def no_words_error
+		NoWordsError.new(@narrow_list, @play_list, @computer_guess_list, @computer_word).run
 	end
 
 	def get_user_response	
