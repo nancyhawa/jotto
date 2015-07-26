@@ -1,15 +1,16 @@
 require_relative 'no_words_error'
+require_relative 'userturn'
 
-class ComputerTurn
+class ComputerTurn < Turn
 
-	def initialize(narrow_list, playernum, computer_word, guess_list_hash, play_list, computer_guess_list)
-		@narrow_list = narrow_list
-		@playernum = playernum
-		@computer_word = computer_word
-		@guess_list_hash = guess_list_hash
-		@play_list = play_list
-		@computer_guess_list = computer_guess_list
-	end
+	# def initialize(narrow_list, playernum, computer_word, guess_list_hash, play_list, computer_guess_list)
+	# 	@narrow_list = narrow_list
+	# 	@playernum = playernum
+	# 	@computer_word = computer_word
+	# 	@guess_list_hash = guess_list_hash
+	# 	@play_list = play_list
+	# 	@computer_guess_list = computer_guess_list
+	# end
 
 	def run
 		computer_guesses
@@ -41,7 +42,7 @@ class ComputerTurn
 	end
 
 	def check_user_response_validity
-		if ["0", "1", "2", "3", "4", "5"].include?(@response) != true or @response.length > 1
+		unless ["0", "1", "2", "3", "4", "5"].include?(@response)
 			puts "That is not a valid response.  Your response must be an integer between 0 and 5."
 			puts "My guess was #{@computer_guess.upcase}"
 			computer_processes_response

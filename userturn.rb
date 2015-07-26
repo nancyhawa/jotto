@@ -1,4 +1,7 @@
-class UserTurn
+class Turn
+
+
+class UserTurn < Turn
 
 	def initialize(narrow_list, playernum, computer_word, guess_list_hash, play_list, computer_guess_list)
 		@narrow_list = narrow_list

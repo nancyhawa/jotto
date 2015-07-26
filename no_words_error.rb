@@ -26,19 +26,19 @@ class NoWordsError
 	end
 
 	def check_letter_count
-		if @user_word.length != 5
+		unless @user_word.length == 5
 	    puts "Your word didn't have five letters!  That's why I got confused."
 	  end
 	end
 
 	def check_repeat_letters
-		if @user_word.repeat_letters? == true
+		if @user_word.repeat_letters?
 	   	puts "Whoops!  Your word had a letter that repeated.  That why I got confused!"
 		end
 	end		
 
 	def check_dictionary
-		if @play_list.include?(@user_word) == false
+		unless @play_list.include?(@user_word)
 			puts "Sorry!  That word isn't in my dictionary.  That's why I got confused!"
 		end
 	end	
@@ -46,7 +46,7 @@ class NoWordsError
 	def check_response_errors
 		puts "You made some errors."		
 		@computer_guess_list.each do |key, value|
-			if @user_word.compare(Word.new(key)) != value.to_i
+			unless @user_word.compare(Word.new(key)) =s= value.to_i
 				puts "You told me that your word had #{value} letters in common with #{key.upcase}."  
 				puts "Actually, it has #{@user_word.compare(key)} letters in common." 
 			end

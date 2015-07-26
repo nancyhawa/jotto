@@ -10,9 +10,7 @@ class WordList < Array
 
 		@array.each do |x|
 			x = Word.new(x)
-			if x.length == 5 && x.repeat_letters? == false
-				list.push(x)
-			end
+			list.push(x) unless x.repeat_letters? || x.length != 5
 		end
 		WordList.new(list)
 	end
@@ -24,9 +22,7 @@ class WordList < Array
 	def refine(guess, letters_in_common)	
 		@array = @array - [guess]
 		@array.each do | word |
-			if word.compare(guess) != letters_in_common
-			 	@array = @array - [word]
-			end
+			@array = @array - [word] unless word.compare(guess) == letters_in_common
 		end
 		
 		return WordList.new(@array)	
