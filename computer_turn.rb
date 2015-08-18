@@ -1,16 +1,8 @@
 require_relative 'no_words_error'
 require_relative 'userturn'
+require_relative 'turn'
 
 class ComputerTurn < Turn
-
-	# def initialize(narrow_list, playernum, computer_word, guess_list_hash, play_list, computer_guess_list)
-	# 	@narrow_list = narrow_list
-	# 	@playernum = playernum
-	# 	@computer_word = computer_word
-	# 	@guess_list_hash = guess_list_hash
-	# 	@play_list = play_list
-	# 	@computer_guess_list = computer_guess_list
-	# end
 
 	def run
 		computer_guesses
@@ -30,14 +22,13 @@ class ComputerTurn < Turn
 		check_response_five
 		process_response
 		no_words_error
-		(UserTurn.new(@narrow_list, @playernum, @computer_word, @guess_list_hash, @play_list, @computer_guess_list)).run
 	end
 
 	def no_words_error
 		NoWordsError.new(@narrow_list, @play_list, @computer_guess_list, @computer_word).run
 	end
 
-	def get_user_response	
+	def get_user_response
 		@response = Word.new(gets.chomp)
 	end
 
@@ -57,15 +48,15 @@ class ComputerTurn < Turn
 				puts "I win!  I told you I would."
 				puts "My word was #{@computer_word.upcase}"
 				Rematch.new.run
-			else 
+			else
 				puts "Ok.  I'm close though.  Not many options."
 			end
 		end
 	end
 
-	def process_response	
+	def process_response
 		@computer_guess_list[@computer_guess] = @response
 		@narrow_list = @narrow_list.refine(@computer_guess, @response.to_i)
 	end
-	
+
 end
