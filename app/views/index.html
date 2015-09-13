@@ -2,113 +2,27 @@
 <head>
 	<title>JOTTO!!</title>
 	<link rel="stylesheet" href="css/styles.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>	<script src="scripts/app.js"></script>
 </head>
 
 <body>
-	<div id = "header">
-
-	JOTTO!
-
+	<div class="header-wrapper">
+		<h1 id="title">JOTTO!</h1>
+		<div id = "credit">
+			Created by Nancy Hawa
+		</div>
 	</div>
 
-	<div id = "credit">
+	<div class="main-wrapper">
+	<div class="clearfix" id="alphabet_wrapper">
+		<div class="clearfix" id="alphabet">
+		</div>
 
-		Created by Nancy Hawa
-	</div>
-
-	<div>
-
-	<div id = "alphabet">
-
-		<table id = "letters">
-			<tr>
-				<td>
-					A
-				</td>
-				<td>
-					B
-				</td>
-				<td>
-					C
-				</td>
-				<td>
-					D
-				</td>
-				<td>
-					E
-				</td>
-				<td>
-					F
-				</td>
-				<td>
-					G
-				</td>
-				<td>
-					H
-				</td>
-				<td>
-					I
-				</td>
-				<td>
-					J
-				</td>
-				<td>
-					K
-				</td>
-				<td>
-					L
-				</td>
-				<td>
-					M
-				</td>
-				<td>
-					N
-				</td>
-				<td>
-					O
-				</td>
-				<td>
-					P
-				</td>
-				<td>
-					Q
-				</td>
-				<td>
-					R
-				</td>
-				<td>
-					S
-				</td>
-				<td>
-					T
-				</td>
-				<td>
-					U
-				</td>
-				<td>
-					V
-				</td>
-				<td>
-					W
-				</td>
-				<td>
-					X
-				</td>
-				<td>
-					Y
-				</td>
-				<td>
-					Z
-				</td>
-			</tr>
-		</table>
-
-	</div>
-
+		<div class="clearfix" id="alphabet2">
+		</div>
 	</div>
 
 	<div id = "game">
-
 		<div id = "guesslist_hash">
 			<table id = "guesses">
 				<tr>
@@ -184,16 +98,26 @@
 			</table>
 		</div>
 
-		<div id = "notes">
-
-			Notes
-
+		<div id="right-side">
+			<div id="guess_form_wrapper">
+				<div id="guess_form">
+					<form action="/index.html" method="post">
+						<label for="guess">Enter your guess below.</label><br>
+						<input id="input_field" type="text"><br>
+						<input id="submit_button" type="submit" value="GUESS"><br>
+					</form>
+				</div>
+			</div>
+			<div id = "notes">
+				Notes
+			</div>
 		</div>
 	</div>
+</div>
 
 
-		
-	
+
+
 
 </body>
 </html>

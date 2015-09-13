@@ -11,7 +11,6 @@ class UserTurn < Turn
 		check_if_correct
 		give_response
 		puts "========================"
-		# next_turn
 	end
 
 	def get_response
