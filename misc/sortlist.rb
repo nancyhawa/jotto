@@ -1,4 +1,4 @@
-require_relative 'wordlist'
+require_relative '../app/models/wordlist'
 
 def repeat_letters?(word)
 	x = 0
@@ -13,9 +13,9 @@ def sort
 
 list = []
 
-word_list.each do |x|
-	if (x.length == 4 or x.length == 5 or x.length == 6) && repeat_letters?(x) == false
-		list.push(x)		
+dictionary.each do |x|
+	if (x.length == 5) && repeat_letters?(x) == false
+		list.push(x)
 	end
 end
 

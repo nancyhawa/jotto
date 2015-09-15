@@ -1,0 +1,65 @@
+<html>
+<head>
+	<title>JOTTO!!</title>
+	<link rel="stylesheet" href="css/styles.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>	<script src="scripts/app.js"></script>
+</head>
+
+<body>
+	<header>
+		<div class="help clearfix">
+			<div class="help_image_js clearfix">
+				<img src="/images/help.png">
+			</div>
+		</div>
+		<div id='directions'>
+			<div id='directions_text'
+				<h1>Directions<h2>
+				<p>Welcome to Jotto!  Your goal is to guess the word that I've come up with.  My word will always be a five letter word with no repeat letters.  For example, I might choose the word 'PANTS', but I would not choose the word 'SIDES' because the letter 'S' appears in it twice.<p>
+
+				<p>You will guess five letter words (also with no repeat letters) one at a time, and I will tell you how many letters your word has in common with mine.  For example, if I chose the word 'PANTS' and you guessed 'SPICE', I would tell you that the words have 2 letters in common (S and P).  You can use this information to figure out my word.</p>
+			</div>
+		</div>
+		<h1 id="title">JOTTO!</h1>
+		<div id = "credit">
+			Created by Nancy Hawa
+		</div>
+	</header>
+
+	<div class="main-wrapper">
+	<div class="clearfix" id="alphabet_wrapper">
+		<div class="clearfix" id="alphabet">
+		</div>
+
+		<div class="clearfix" id="alphabet2">
+		</div>
+	</div>
+
+	<div id = "game">
+		<div id = "guesslist_hash">
+			<table id = "guesses">
+				<tr>
+					<td class="th guesses_col">Guesses</td>
+					<td class="th values_col">Values</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="right-side">
+			<div id="guess_form_wrapper">
+				<form id="guess_form" action="/guesses" method="post">
+					<label for="guess">Enter your guess below.</label><br>
+					<input id="computer_word" type="hidden" name="computer_word" value=<%=@computer_word %> >
+					<input id="input_field" name="word" type="text"><br>
+					<input id="submit_button" type="submit" value="GUESS"><br>
+				</form>
+			</div>
+			<div id='notes-wrapper' class='clearfix'>
+			<textarea id="notes">"NOTES"</textarea>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

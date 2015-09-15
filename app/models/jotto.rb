@@ -1,13 +1,3 @@
-require_relative 'wordlist'
-require_relative 'comp_choice_list'
-require_relative 'directions'
-require_relative 'wordclass'
-require_relative 'rematch'
-require_relative 'userturn'
-require_relative 'wordlistclass'
-require_relative 'computer_turn'
-require_relative 'no_words_error'
-
 class JottoGame
 	def initialize
 		@play_list = (WordList.new(dictionary)).word_sort
@@ -66,5 +56,3 @@ class JottoGame
 	end
 
 end
-
-JottoGame.new.run

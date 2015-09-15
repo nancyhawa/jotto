@@ -11,13 +11,17 @@ class Word < String
 	end
 
 	def compare(other_word)
+		word = Word.new(@word)
 		word2 = Word.new(other_word)
-		@word.letters.count { |letter| word2.letters.include?(letter) }
+
+		word.letters.count { |letter| word2.letters.include?(letter) }
 	end
 
 	def letters
 		downcase.split("")
 	end
+
+
 end
 #
 #

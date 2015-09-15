@@ -1,7 +1,7 @@
-def word_list
+def dictionary
 
-wordlist = 
+dictionary = 
 
-return wordlist
+return dictionary
 
 end
