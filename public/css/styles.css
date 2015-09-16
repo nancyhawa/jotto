@@ -260,7 +260,7 @@ table {
 
 /*----Notes Placeholder Styling----*/
 ::-webkit-input-placeholder {
-	/*font-family: "Amatic SC", cursive;*/
+	font-family: "Amatic SC", cursive;
 	font-size: 2em;
 	text-align: center;
 	color: black;
@@ -270,7 +270,7 @@ table {
 }
 
 :-moz-placeholder { /* Firefox 18- */
-	/*font-family: "Amatic SC", cursive;*/
+	font-family: "Amatic SC", cursive;
 	font-size: 2em;
 	text-align: center;
 	color: black;
@@ -280,7 +280,7 @@ table {
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-	/*font-family: "Amatic SC", cursive;*/
+	font-family: "Amatic SC", cursive;
 	font-size: 2em;
 	text-align: center;
 	color: black;
@@ -290,7 +290,7 @@ table {
 }
 
 :-ms-input-placeholder {
-	/*font-family: "Amatic SC", cursive;*/
+	font-family: "Amatic SC", cursive;
 	font-size: 2em;
 	text-align: center;
 	color: black;
