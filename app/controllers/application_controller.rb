@@ -4,7 +4,7 @@ class ApplicationController < Sinatra::Base
   set :public, 'public'
   set :views, Proc.new { File.join(root, "../views/") }
 
-  get '/index' do
+  get '/' do
     computer_list = WordList.new(comp_dictionary)
     @computer_word = Word.new(computer_list.random_word)
     erb :'index'

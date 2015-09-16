@@ -23,7 +23,7 @@ $(function(){
       if (input == computerWord){
         congratulateWinner()
       }else {$.post( '/guesses', {guess: {word: input, computer_word: computerWord}}, function(data){
-        var word = data.word
+        var word = data.word.toUpperCase
         var count = data.count
         $('#guesses').append(renderTableRow(word, count))
       }, 'json');
