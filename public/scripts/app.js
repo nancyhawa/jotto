@@ -137,7 +137,7 @@ function validateWord(){
   }else if (repeatLetters(word)){
     $('.error').remove();
     $('#input_field').before("<div class='error'>" +
-      "Your must not contain repeat letters." +
+      "Your word must not contain repeat letters." +
       "</div>")
       return false
   }else { isWord(word) }
