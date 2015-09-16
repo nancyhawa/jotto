@@ -145,14 +145,14 @@ input[type=text] {
 textarea {
 	text-align: center;
 	font-size: 30px;
-	/*font-family: "Amatic SC", cursive;*/
+	font-family: "Amatic SC", cursive;
 	width: 100%;
 }
 
 textarea:focus {
 	box-shadow: 0 0 10px #FF69B4;
 	border: 1px solid #FF69B4;
-	/*font-family: "Amatic SC", cursive;*/
+	font-family: "Amatic SC", cursive;
 }
 
 #submit_button {
