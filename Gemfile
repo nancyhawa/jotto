@@ -1,11 +1,14 @@
 source "https://rubygems.org"
+ruby '2.2.3'
 
-gem "thin"
+
 gem "require_all"
 gem "sinatra"
-gem "shotgun"
 gem "rake"
-gem 'pry'
-gem "rspec"
 gem 'json'
 gem 'puma'
+
+gem 'pry', group: :development
+gem "shotgun", group: :development
+
+gem "rspec", group: :test
