@@ -1,6 +1,7 @@
 require 'json'
 
 class ApplicationController < Sinatra::Base
+  set :public, 'public'
   set :views, Proc.new { File.join(root, "../views/") }
 
   get '/index' do
