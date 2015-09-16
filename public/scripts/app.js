@@ -36,7 +36,7 @@ function sendItToBackend(){
       $('#guesses').append(renderTableRow(word, count))
     }, 'json');
 
-    $('#input_field').reset();
+    $('#input_field').val("");
     $('.error').remove();
     // $("#submit_button").attr("disabled", "true");
   };
