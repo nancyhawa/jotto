@@ -156,7 +156,7 @@ textarea:focus {
 	border: 1px solid #FF69B4;
 	background-color: white;
 	width: 40%;
-	/*font-family: "Amatic SC", cursive;*/
+	font-family: "Amatic SC", cursive;
 	font-size: 0.5em;
 }
 
@@ -168,7 +168,7 @@ textarea:focus {
 	border: 1px solid grey;
 	background-color: white;
 	width: 40%;
-	/*font-family: "Amatic SC", cursive;*/
+	font-family: "Amatic SC", cursive;
 	font-size: 0.5em;
 }
 
