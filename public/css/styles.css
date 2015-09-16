@@ -54,11 +54,9 @@ body {
 	width: 90%;
 	display:none;
 	background-color: white;
-	/*font-size: 0.4em;*/
 	border: 2px black solid;
 	padding: 30px;
 	margin: 20px auto 10px;
-	/*border-radius: 40px;*/
 }
 
 #directions h1 {
@@ -72,16 +70,11 @@ body {
 
 .error {
 	width: 80%;
-	/*background-color: #EEB4B4;*/
-	/*color: red;*/
 	font-size: 0.5em;
 	margin: 10px auto 0px;
 	border: 2px dotted #FF69B4;
 }
 
-/*#directions_text {
-	display: none;
-}*/
 #guess_form {
 	margin: 20px auto;
 }

@@ -2,11 +2,19 @@ $(function(){
   renderAlphabet($('#alphabet'));
   renderAlphabet2($('#alphabet2'));
 
-  $("#submit_button").attr("disabled", "true");
+  // $("#submit_button").attr("disabled", "true");
+
+  $('#guess_form').submit(function(e){
+    // debugger
+    e.preventDefault();
+    validateWord();
+  });
+
+  // $("#submit_button").on('click', submitWord())
 
   $('.letter_wrapper').on('click', rotateLetterImage);
 
-  $('#input_field').on('blur', validateWord);
+  // $('#input_field').on('blur', validateWord);
 
   $('.help_image_js').click(function(){
     $('#directions').slideToggle(2000);
@@ -14,26 +22,25 @@ $(function(){
   });
 
 //This takes the users guess and puts it in the guesses table
-  $('#guess_form').submit(function(e){
-    e.preventDefault();
-    // if (validateWord()){
-      var input = $('#input_field').val().toLowerCase()
-      var computerWord = $('#computer_word').val()
-
-      if (input == computerWord){
-        congratulateWinner()
-      }else {$.post( '/guesses', {guess: {word: input, computer_word: computerWord}}, function(data){
-        var word = data.word.toUpperCase()
-        var count = data.count
-        $('#guesses').append(renderTableRow(word, count))
-      }, 'json');
-
-      this.reset();
-      $('.error').remove();
-      $("#submit_button").attr("disabled", "true");
-    };
-  });
 });
+
+function sendItToBackend(){
+    var input = $('#input_field').val().toLowerCase()
+    var computerWord = $('#computer_word').val()
+
+    if (input == computerWord){
+      congratulateWinner()
+    }else {$.post( '/guesses', {guess: {word: input, computer_word: computerWord}}, function(data){
+      var word = data.word.toUpperCase()
+      var count = data.count
+      $('#guesses').append(renderTableRow(word, count))
+    }, 'json');
+
+    this.reset();
+    $('.error').remove();
+    // $("#submit_button").attr("disabled", "true");
+  };
+};
 
 function congratulateWinner(){
   $('#guess_form').remove;
@@ -126,11 +133,13 @@ function validateWord(){
     $('#input_field').before("<div class='error'>" +
       "Your word must be five letters long." +
       "</div>")
+      return false
   }else if (repeatLetters(word)){
     $('.error').remove();
     $('#input_field').before("<div class='error'>" +
       "Your must not contain repeat letters." +
       "</div>")
+      return false
   }else { isWord(word) }
 }
 
@@ -142,17 +151,19 @@ function isWord(input){
           "That word is not in our dictionary." +
           "</div>")
       }else {
-        $('.error').remove()
-        $("#submit_button").removeAttr('disabled')
+        $('.error').remove();
+        sendItToBackend();
       }
     });
 }
 
-function isWordOutcome(message){
-  debugger
-  if (message == "true"){
-    return true
-  }else {
-    return false
-  }
-}
+// function submitWord(){
+//   if (typeOf validateWord() === "undefined"){
+//
+//   };
+// }
+//
+// function returnTrue(){
+//   return true
+// }
+// }
