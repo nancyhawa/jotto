@@ -25,6 +25,8 @@ $(function(){
 });
 
 function sendItToBackend(){
+    $('.ind-error').remove()
+
     var input = $('#input_field').val().toLowerCase()
     var computerWord = $('#computer_word').val()
 
@@ -112,46 +114,59 @@ function renderLetterTemplate(letter){
 }
 
 function repeatLetters(word){
-  var letters = word.toLowerCase().split("")
+  var letters = $('#input_field').val().toLowerCase().split("")
   var n = [];
   for(var i = 0; i < letters.length; i++)
       {
     if (n.indexOf(letters[i]) == -1) n.push(letters[i]);
       }
-  if (n.length != 5){
+  if (n.length != letters.length){
     return true
   }else {
     return false
   }
 }
 
-function validateWord(){
+function validateLetterCount(word){
+  // debugger
   var word = $('#input_field').val().toLowerCase()
-  $('.error').remove()
 
   if (word.split("").length != 5){
-    $('#input_field').before("<div class='error'>" +
+    $('#errors').append("<div class='ind-error' id='repeat'>" +
       "Your word must be five letters long." +
       "</div>")
       return false
-  }else if (repeatLetters(word)){
-    $('.error').remove();
-    $('#input_field').before("<div class='error'>" +
+  } else {return true};
+}
+
+function validateRepeatLetters(word){
+  if (repeatLetters($('#input_field').val())){
+      $('#errors').append("<div class='ind-error' id='repeat'>" +
       "Your word must not contain repeat letters." +
       "</div>")
       return false
-  }else { isWord(word) }
+    } else {return true};
 }
 
-function isWord(input){
+function validateWord(){
+
+  var word = $('#input_field').val().toLowerCase()
+  // debugger
+  $('.ind-error').remove()
+
+  if (validateLetterCount(word) && validateRepeatLetters(word)){
+      validateIsWord(word)
+    };
+}
+
+function validateIsWord(input){
     $.post( '/words', {guess: {word: input}}).done(function(message){
       if (message == "false"){
-        $('.error').remove();
-        $('#input_field').before("<div class='error'>" +
+        $('#errors').append("<div class='ind-error' id='dictionary'>" +
           "That word is not in our dictionary." +
           "</div>")
       }else {
-        $('.error').remove();
+        $('.ind-error').remove();
         sendItToBackend();
       }
     });

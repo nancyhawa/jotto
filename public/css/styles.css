@@ -68,7 +68,14 @@ body {
 	font-size: 0.5em;
 }
 
-.error {
+/*.error {
+	width: 80%;
+	font-size: 0.5em;
+	margin: 10px auto 0px;
+	border: 2px dotted #FF69B4;
+}*/
+
+#repeat, #dictionary, #count {
 	width: 80%;
 	font-size: 0.5em;
 	margin: 10px auto 0px;

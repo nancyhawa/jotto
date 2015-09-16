@@ -52,6 +52,7 @@
 				<form id="guess_form" action="/guesses" method="post">
 					<label for="guess">Enter your guess below.</label><br>
 					<input id="computer_word" type="hidden" name="computer_word" value=<%=@computer_word %> >
+					<div id="errors"></div>
 					<input id="input_field" name="word" type="text"><br>
 					<input id="submit_button" type="submit" value="GUESS"><br>
 				</form>
