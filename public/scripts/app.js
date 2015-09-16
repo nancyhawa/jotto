@@ -33,7 +33,6 @@ $(function(){
       $("#submit_button").attr("disabled", "true");
     };
   });
-
 });
 
 function congratulateWinner(){
@@ -44,8 +43,7 @@ function congratulateWinner(){
     "<div id='play_again_button'>" +
     "<a href='/index'>Play Again!</a>" +
     "</div>" +
-    "</div>"
-  )
+    "</div>")
 }
 
 function renderTableRow(word, count){
@@ -120,7 +118,6 @@ function repeatLetters(word){
   }
 }
 
-
 function validateWord(){
   var word = $('#input_field').val().toLowerCase()
   $('.error').remove()
@@ -129,16 +126,12 @@ function validateWord(){
     $('#input_field').before("<div class='error'>" +
       "Your word must be five letters long." +
       "</div>")
-    return false
-
   }else if (repeatLetters(word)){
     $('.error').remove();
     $('#input_field').before("<div class='error'>" +
       "Your must not contain repeat letters." +
       "</div>")
-      return false
-  }
-  else { isWord(word) }
+  }else { isWord(word) }
 }
 
 function isWord(input){
@@ -148,8 +141,7 @@ function isWord(input){
         $('#input_field').before("<div class='error'>" +
           "That word is not in our dictionary." +
           "</div>")
-        }
-      else {
+      }else {
         $('.error').remove()
         $("#submit_button").removeAttr('disabled')
       }
