@@ -50,7 +50,7 @@ function congratulateWinner(){
   $('#guess_form_wrapper').html(
     "<div id='winner'>Congratulations!  You Win!!" +
     "<div id='play_again_button'>" +
-    "<a href='/index'>Play Again!</a>" +
+    "<a href='/'>Play Again!</a>" +
     "</div>" +
     "</div>")
 }
