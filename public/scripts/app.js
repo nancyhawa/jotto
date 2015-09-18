@@ -5,23 +5,17 @@ $(function(){
   // $("#submit_button").attr("disabled", "true");
 
   $('#guess_form').submit(function(e){
-    // debugger
     e.preventDefault();
     validateWord();
   });
 
-  // $("#submit_button").on('click', submitWord())
 
   $('.letter_wrapper').on('click', rotateLetterImage);
 
-  // $('#input_field').on('blur', validateWord);
-
   $('.help_image_js').click(function(){
     $('#directions').slideToggle(2000);
-    // $('#directions_text').fadeToggle(2000);
   });
 
-//This takes the users guess and puts it in the guesses table
 });
 
 function sendItToBackend(){
@@ -40,9 +34,7 @@ function sendItToBackend(){
 
     $('#input_field').val("");
     $('.error').remove();
-    // $('#guesslist_hash').scrollTop($('#guesslist_hash')[0].scrollHeight)
     $('#guesslist_hash').animate({ scrollTop: $('#guesslist_hash')[0].scrollHeight}, 3000)
-    // $("#submit_button").attr("disabled", "true");
   };
 };
 
