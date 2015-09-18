@@ -40,6 +40,8 @@ function sendItToBackend(){
 
     $('#input_field').val("");
     $('.error').remove();
+    // $('#guesslist_hash').scrollTop($('#guesslist_hash')[0].scrollHeight)
+    $('#guesslist_hash').animate({ scrollTop: $('#guesslist_hash')[0].scrollHeight}, 3000)
     // $("#submit_button").attr("disabled", "true");
   };
 };
