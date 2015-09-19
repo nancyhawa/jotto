@@ -7,8 +7,7 @@ $(function(){
   $('#guess_form').submit(function(e){
     e.preventDefault();
     validateWord();
-  });
-
+  })
 
   $('.letter_wrapper').on('click', rotateLetterImage);
 
@@ -18,23 +17,27 @@ $(function(){
 
 });
 
+var guesses = 0
+
 function sendItToBackend(){
-    $('.ind-error').remove()
+  $('.ind-error').remove()
 
-    var input = $('#input_field').val().toLowerCase()
-    var computerWord = $('#computer_word').val()
+  var input = $('#input_field').val().toLowerCase()
+  var computerWord = $('#computer_word').val()
 
-    if (input == computerWord){
-      congratulateWinner()
-    }else {$.post( '/guesses', {guess: {word: input, computer_word: computerWord}}, function(data){
-      var word = data.word.toUpperCase()
-      var count = data.count
-      $('#guesses').append(renderTableRow(word, count))
-    }, 'json');
+  $.post( '/guesses', {guess: {word: input, computer_word: computerWord}}, function(data){
+    var word = data.word.toUpperCase()
+    var count = data.count
+    $('#guesses').append(renderTableRow(word, count))
+  }, 'json');
 
-    $('#input_field').val("");
-    $('.error').remove();
-    $('#guesslist_hash').animate({ scrollTop: $('#guesslist_hash')[0].scrollHeight}, 3000)
+  $('#input_field').val("");
+  $('.error').remove();
+  $('#guesslist_hash').animate({ scrollTop: $('#guesslist_hash')[0].scrollHeight}, 3000)
+  ++guesses
+
+  if (input == computerWord){
+    congratulateWinner()
   };
 };
 
@@ -42,7 +45,9 @@ function congratulateWinner(){
   $('#guess_form').remove;
 
   $('#guess_form_wrapper').html(
-    "<div id='winner'>Congratulations!  You Win!!" +
+    "<div id='winner'>" +
+    "<div id='congratulations'>Congratulations!  You Win!! </div>" +
+    "<div id ='total_guesses'>It took you " + guesses + " guesses.</div>" +
     "<div id='play_again_button'>" +
     "<a href='/'>Play Again!</a>" +
     "</div>" +

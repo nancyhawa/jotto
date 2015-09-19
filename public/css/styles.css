@@ -254,8 +254,12 @@ table {
 #winner {
 	background-color: #FF69B4;
 	color: white;
-	padding-top: 50px;
+	padding-top: 40px;
 	height: 185px;
+}
+
+#total_guesses {
+	font-size: .7em
 }
 
 /*----Notes Placeholder Styling----*/
