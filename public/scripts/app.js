@@ -15,6 +15,8 @@ $(function(){
     $('#directions').slideToggle(2000);
   });
 
+  $('#alphabet_wrapper').mousedown(function(e){ e.preventDefault(); });
+
 });
 
 var guesses = 0
