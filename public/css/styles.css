@@ -45,8 +45,8 @@ body {
 	line-height: 0;
 }
 
-#credit{
-	font-size: .5em;
+#tagline{
+	font-size: 1em;
 	margin-bottom: 20px;
 }
 
@@ -109,12 +109,16 @@ body {
 	max-height: 20px;
 }
 
-#header {
+header {
 	display: block;
-	background-color: #E0F5FF;
-	font-weight: heavy;
-	font-size: 4em;
 }
+
+#title {
+	font-weight: heavy;
+	font-size: 3em;
+	margin: 0;
+}
+
 
 .help {
 	/*position: absolute;*/
