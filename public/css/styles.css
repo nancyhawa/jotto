@@ -95,15 +95,20 @@ body {
 }
 
 #guesslist_hash {
-	display: block;
-	width: 44%;
-	float: left;
+	width: 100%;
 	background-color: #FFFFFF;
-	height: 450px;
 	margin: 20px;
 	font-size: 2em;
 	border: 2px solid black;
 	overflow: scroll;
+	height: 450px;
+}
+
+#left-side {
+	display: block;
+	width: 44%;
+	float: left;
+	height: 480px;
 }
 
 #guesslist_hash th, #guesslist_hash td {
@@ -161,12 +166,20 @@ textarea:focus {
 	font-family: "Amatic SC", cursive;
 }
 
+#give-up {
+	box-shadow: 0 0 10px black;
+	border: 1px solid black;
+}
+
 #submit_button {
+	box-shadow: 0 0 10px #FF69B4;
+	border: 1px solid #FF69B4;
+}
+
+#submit_button, #give-up {
 	padding: 3px 0px 3px 3px;
 	margin: 5px 1px 3px 0px;
 	height: 30px;
-	box-shadow: 0 0 10px #FF69B4;
-	border: 1px solid #FF69B4;
 	background-color: white;
 	width: 40%;
 	font-family: "Amatic SC", cursive;
@@ -225,6 +238,19 @@ textarea:focus {
 	border-radius: 20px;
 }
 
+#loser_play_again_button {
+	box-shadow: 0 0 10px #FF69B4;
+	border: 1px solid #FF69B4;
+	padding: 3px 0px 3px 3px;
+	margin: 20px auto;
+	height: 40px;
+	border: 1px solid black;
+	background-color: white;
+	width: 30%;
+	font-size: 0.7em;
+	border-radius: 20px;
+}
+
 a {
 	text-decoration: none
 }
@@ -259,6 +285,13 @@ table {
 
 #winner {
 	background-color: #FF69B4;
+	color: white;
+	padding-top: 40px;
+	height: 185px;
+}
+
+#loser {
+	background-color: #2E2E2E;
 	color: white;
 	padding-top: 40px;
 	height: 185px;

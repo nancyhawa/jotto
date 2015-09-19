@@ -17,6 +17,7 @@ $(function(){
 
   $('#alphabet_wrapper').mousedown(function(e){ e.preventDefault(); });
 
+  $('#give-up').on('click', revealAnswer)
 });
 
 var guesses = 0
@@ -172,6 +173,19 @@ function validateIsWord(input){
       }
     });
 }
+
+function revealAnswer(){
+  $('#guess_form').remove;
+
+  $('#guess_form_wrapper').html(
+    "<div id='loser'>" +
+    "<div id='congratulations'>Lame. You lose. </div>" +
+    "<div id ='total_guesses'>The answer was " + $('#computer_word').val().toUpperCase() +". </div>" +
+    "<div id='loser_play_again_button'>" +
+    "<a href='/'>Play Again!</a>" +
+    "</div>" +
+    "</div>")
+  }
 
 // function submitWord(){
 //   if (typeOf validateWord() === "undefined"){
