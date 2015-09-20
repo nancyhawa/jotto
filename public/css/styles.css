@@ -8,7 +8,7 @@
 }
 
 #alphabet, #alphabet2 {
-	clear: both;
+	clear: none;
 	margin-bottom: 30px;
 	margin: auto;
 	text-align: center;
@@ -16,12 +16,18 @@
 	height: 75px;
 }
 
-#alphabet_wrapper{
+/*#alphabet {
+	margin-top: -100px;
+}*/
+
+#alphabet_wrapper {
 	border: 2px solid black;
 	margin: auto;
+	margin-top: 5px;
 	width: 90%;
 	background-color: white;
 	cursor: pointer;
+	clear: both;
 }
 
 .background_image {
@@ -211,6 +217,17 @@ textarea:focus {
 	font-size: 0.5em;
 }
 
+#reset {
+	float: right;
+	margin-right: 6%;
+	padding: 3px 0px 3px 3px;
+	height: 20px;
+	width: 30px;
+	font-size: 0.6em;
+	margin-bottom: 8px;
+	cursor: pointer;
+}
+
 .letter {
 	position: absolute;
 	float: left;
@@ -220,6 +237,7 @@ textarea:focus {
 }
 
 .letter_wrapper {
+	clear: none;
 	float: left;
 	width: 5.5%;
 	margin: 1%;

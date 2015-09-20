@@ -29,44 +29,44 @@
 	</header>
 
 	<div class="main-wrapper">
-	<div class="clearfix" id="alphabet_wrapper">
-		<div class="clearfix" id="alphabet">
+		<div id='reset'>Reset</div>
+		<div class="clearfix" id="alphabet_wrapper">
+			<div class="clearfix" id="alphabet">
+			</div>
+
+			<div class="clearfix" id="alphabet2">
+			</div>
 		</div>
 
-		<div class="clearfix" id="alphabet2">
+		<div id = "game">
+			<div class="clearfix" id="left-side">
+				<div id = "guesslist_hash">
+					<table id = "guesses">
+						<tr>
+							<td class="th guesses_col">Guesses</td>
+							<td class="th values_col">Values</td>
+						</tr>
+					</table>
+				</div>
+				<button id="give-up">I give up.</button>
+			</div>
+
+			<div id="right-side">
+				<div id="guess_form_wrapper">
+					<form id="guess_form" action="/guesses" method="post">
+						<label for="guess">Enter your guess below.</label><br>
+						<input id="computer_word" type="hidden" name="computer_word" value=<%=@computer_word %> >
+						<div id="errors"></div>
+						<input id="input_field" name="word" type="text"><br>
+						<input id="submit_button" type="submit" value="GUESS"><br>
+					</form>
+				</div>
+				<div id='notes-wrapper' class='clearfix'>
+				<textarea id="notes">NOTES</textarea>
+				</div>
+			</div>
 		</div>
 	</div>
-
-
-	<div id = "game">
-		<div class="clearfix" id="left-side">
-			<div id = "guesslist_hash">
-				<table id = "guesses">
-					<tr>
-						<td class="th guesses_col">Guesses</td>
-						<td class="th values_col">Values</td>
-					</tr>
-				</table>
-			</div>
-			<button id="give-up">I give up.</button>
-		</div>
-
-		<div id="right-side">
-			<div id="guess_form_wrapper">
-				<form id="guess_form" action="/guesses" method="post">
-					<label for="guess">Enter your guess below.</label><br>
-					<input id="computer_word" type="hidden" name="computer_word" value=<%=@computer_word %> >
-					<div id="errors"></div>
-					<input id="input_field" name="word" type="text"><br>
-					<input id="submit_button" type="submit" value="GUESS"><br>
-				</form>
-			</div>
-			<div id='notes-wrapper' class='clearfix'>
-			<textarea id="notes">NOTES</textarea>
-			</div>
-		</div>
-	</div>
-</div>
 
 </body>
 </html>

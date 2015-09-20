@@ -16,6 +16,8 @@ $(function(){
   $('#alphabet_wrapper').mousedown(function(e){ e.preventDefault(); });
 
   $('#give-up').on('click', revealAnswer)
+
+  $('#reset').on('click', resetAlphabetBar)
 });
 
 var guesses = 0
@@ -183,4 +185,12 @@ function revealAnswer(){
     "<a href='/'>Play Again!</a>" +
     "</div>" +
     "</div>")
+  }
+
+  function resetAlphabetBar(){
+    $('#alphabet').html("")
+    $('#alphabet2').html("")
+    renderAlphabet($('#alphabet'));
+    renderAlphabet2($('#alphabet2'));
+    $('.letter_wrapper').on('click', rotateLetterImage);
   }
