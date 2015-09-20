@@ -167,14 +167,27 @@ textarea:focus {
 }
 
 #give-up {
-	box-shadow: 0 0 10px black;
-	border: 1px solid black;
+	box-shadow: 0 0 15px #FF69B4;
+	border: 2px solid #FF69B4;
 }
 
 #submit_button {
 	box-shadow: 0 0 10px #FF69B4;
 	border: 1px solid #FF69B4;
 }
+
+#directions_text {
+	border: 3px solid #FF69B4;
+	padding: 20px;
+	font-size: 1.5em;
+}
+
+#directions_text h2 {
+	/*margin: 10px;*/
+	font-size: 1em;
+}
+
+
 
 #submit_button, #give-up {
 	padding: 3px 0px 3px 3px;

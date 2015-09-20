@@ -2,8 +2,6 @@ $(function(){
   renderAlphabet($('#alphabet'));
   renderAlphabet2($('#alphabet2'));
 
-  // $("#submit_button").attr("disabled", "true");
-
   $('#guess_form').submit(function(e){
     e.preventDefault();
     validateWord();
@@ -186,14 +184,3 @@ function revealAnswer(){
     "</div>" +
     "</div>")
   }
-
-// function submitWord(){
-//   if (typeOf validateWord() === "undefined"){
-//
-//   };
-// }
-//
-// function returnTrue(){
-//   return true
-// }
-// }
