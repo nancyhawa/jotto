@@ -59,6 +59,8 @@ body {
 }
 
 #directions{
+	/*border: 1px solid #FF69B4;
+	box-shadow: 0 0 50px #FF69B4;*/
 	width: 90%;
 	display:none;
 	background-color: white;
@@ -175,6 +177,7 @@ textarea:focus {
 #give-up {
 	box-shadow: 0 0 15px #FF69B4;
 	border: 2px solid #FF69B4;
+	font-size: .3ex;
 }
 
 #submit_button {
@@ -183,7 +186,8 @@ textarea:focus {
 }
 
 #directions_text {
-	border: 3px solid #FF69B4;
+	border: 8px solid #FF69B4;
+	/*box-shadow: 0 0 30px #FF69B4;*/
 	padding: 20px;
 	font-size: 1.5em;
 }
@@ -197,7 +201,7 @@ textarea:focus {
 
 #submit_button, #give-up {
 	padding: 3px 0px 3px 3px;
-	margin: 5px 1px 3px 0px;
+	margin: auto;
 	height: 30px;
 	background-color: white;
 	width: 40%;

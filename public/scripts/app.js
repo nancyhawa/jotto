@@ -73,12 +73,12 @@ function rotateLetterImage(){
   };
 
   if (this.childNodes[0].innerHTML == letterImage['blank']){
-    this.childNodes[0].innerHTML = letterImage['green']
-  }else if (this.childNodes[0].innerHTML == letterImage['green']) {
-    this.childNodes[0].innerHTML = letterImage['yellow']
-  }else if (this.childNodes[0].innerHTML == letterImage['yellow']) {
     this.childNodes[0].innerHTML = letterImage['red']
   }else if (this.childNodes[0].innerHTML == letterImage['red']) {
+    this.childNodes[0].innerHTML = letterImage['yellow']
+  }else if (this.childNodes[0].innerHTML == letterImage['yellow']) {
+    this.childNodes[0].innerHTML = letterImage['green']
+  }else if (this.childNodes[0].innerHTML == letterImage['green']) {
     this.childNodes[0].innerHTML = letterImage['blank']
   };
 }
