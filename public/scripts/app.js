@@ -65,21 +65,22 @@ function renderTableRow(word, count){
 }
 
 function rotateLetterImage(){
+
   var letterImage = {
     'blank': "",
     'red': "<img id=\"letter_image_js\" src=\"images/red-x.png\">",
     'yellow': "<img id=\"letter_image_js\" src=\"images/yellow-question-mark.png\">",
     'green': "<img id=\"letter_image_js\" src=\"images/green-circle.png\">",
   };
-
-  if (this.childNodes[0].innerHTML == letterImage['blank']){
-    this.childNodes[0].innerHTML = letterImage['red']
-  }else if (this.childNodes[0].innerHTML == letterImage['red']) {
-    this.childNodes[0].innerHTML = letterImage['yellow']
-  }else if (this.childNodes[0].innerHTML == letterImage['yellow']) {
-    this.childNodes[0].innerHTML = letterImage['green']
-  }else if (this.childNodes[0].innerHTML == letterImage['green']) {
-    this.childNodes[0].innerHTML = letterImage['blank']
+    // debugger
+  if ($(this).find('.background_image').html() == letterImage['blank']){
+    $(this).find('.background_image').html(letterImage['red'])
+  }else if ($(this).find('.background_image').html() == letterImage['red']) {
+    $(this).find('.background_image').html(letterImage['yellow'])
+  }else if ($(this).find('.background_image').html() == letterImage['yellow']) {
+    $(this).find('.background_image').html(letterImage['green'])
+  }else if ($(this).find('.background_image').html() == letterImage['green']) {
+    $(this).find('.background_image').html(letterImage['blank'])
   };
 }
 
@@ -109,9 +110,7 @@ function renderLetterTemplate(letter){
         "<div class='background_image clearfix'>" +
           "" +
         "</div>" +
-        "<div class='letter'>" +
           letter +
-        "</div>" +
         "</div>"
 }
 

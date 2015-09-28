@@ -13,12 +13,9 @@
 	margin: auto;
 	text-align: center;
 	background-color: white;
-	height: 75px;
+	max-height: 75px;
+	min-height: 75px;
 }
-
-/*#alphabet {
-	margin-top: -100px;
-}*/
 
 #alphabet_wrapper {
 	border: 2px solid black;
@@ -31,10 +28,32 @@
 }
 
 .background_image {
+	position:absolute;
 	opacity: 0.2;
 	float: left;
-	z-index: -1;
+	z-index: 2;
 }
+
+.letter {
+	position: absolute;
+	float: left;
+	z-index: 100;
+	text-align: center;
+	width: 5%;
+	max-height: 75px;
+	margin: auto;
+
+}
+
+.letter_wrapper {
+	position: relative;
+	clear: none;
+	float: left;
+	width: 5.5%;
+	margin: 1%;
+}
+
+
 
 body {
 	font-family: "Amatic SC", "Open Sans", "Helvetica", cursive;
@@ -78,12 +97,6 @@ body {
 	font-size: 0.5em;
 }
 
-/*.error {
-	width: 80%;
-	font-size: 0.5em;
-	margin: 10px auto 0px;
-	border: 2px dotted #FF69B4;
-}*/
 
 #repeat, #dictionary, #count {
 	width: 80%;
@@ -233,7 +246,7 @@ textarea:focus {
 }
 
 .letter {
-	position: absolute;
+	position: relative;
 	float: left;
 	z-index: 100;
 	text-align: center;
@@ -241,6 +254,7 @@ textarea:focus {
 }
 
 .letter_wrapper {
+	position: relative;
 	clear: none;
 	float: left;
 	width: 5.5%;
